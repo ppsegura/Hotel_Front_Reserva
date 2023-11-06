@@ -7,6 +7,13 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ListarHotelComponent } from './components/listar-hotel/listar-hotel.component';
+import { RegistrarHotelComponent } from './components/registrar-hotel/registrar-hotel.component';
+
+import {ServicioService} from './Servicio/servicio.service';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { EditarHotelComponent } from './components/editar-hotel/editar-hotel.component';
 
 @NgModule({
   declarations: [
@@ -14,13 +21,18 @@ import { RegisterComponent } from './components/register/register.component';
     NavigationComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ListarHotelComponent,
+    RegistrarHotelComponent,
+    EditarHotelComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ServicioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
