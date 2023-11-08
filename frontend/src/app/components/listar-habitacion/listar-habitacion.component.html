@@ -1,0 +1,16 @@
+<div style="text-align: center;" *ngFor="let habitacion of habitaciones">
+  <h2>{{ habitacion.nombre }}</h2>
+  <p>Tipo: {{ habitacion.tipo }}</p>
+  <p>Capacidad: {{ habitacion.capacidad }}</p>
+  <p>Precio: {{ habitacion.precio | currency }}</p>
+  <p>Número: {{ habitacion.numero }}</p>
+  <h2>Habitacion</h2>
+  <img style="width: 250px;" src="{{ habitacion.imagen }}" >
+  <p>Nombre de Hotel: {{ habitacion.hotel.nombre }}</p>
+  <p>Ciudad de Hotel: {{ habitacion.hotel.ciudad }}</p>
+  <p>Direccion de Hotel: {{ habitacion.hotel.direccion }}</p>
+  <h2>Hotel</h2>
+  <img style="width: 250px;" src="{{ habitacion.hotel.imagen }}" >
+  <!-- Agregar botón para eliminar habitación -->
+  <button (click)="eliminarHabitacion(habitacion.id)">Eliminar</button>
+</div>

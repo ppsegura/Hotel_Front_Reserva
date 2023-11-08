@@ -14,6 +14,9 @@ import {ServicioService} from './Servicio/servicio.service';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { EditarHotelComponent } from './components/editar-hotel/editar-hotel.component';
+import { ListarHabitacionComponent } from './components/listar-habitacion/listar-habitacion.component';
+import { RegistrarHabitacionComponent } from './components/registrar-habitacion/registrar-habitacion.component';
+import { EditarHabitacionComponent } from './components/editar-habitacion/editar-habitacion.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { EditarHotelComponent } from './components/editar-hotel/editar-hotel.com
     RegisterComponent,
     ListarHotelComponent,
     RegistrarHotelComponent,
-    EditarHotelComponent
+    EditarHotelComponent,
+    ListarHabitacionComponent,
+    RegistrarHabitacionComponent,
+    EditarHabitacionComponent
   ],
   imports: [
     BrowserModule,
