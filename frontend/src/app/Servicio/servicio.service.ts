@@ -32,9 +32,10 @@ export class ServicioService {
     return this.http.put<Hotel>(this.Url+"/"+hotel.id,hotel);
   }
 
-  eliminarHotel(hotel:Hotel){
-    return this.http.delete<Hotel>(this.Url+"/"+hotel.id);
+  eliminarHotel(id:number){
+    return this.http.delete<Hotel>(this.Url+"/"+ id);
   }
+
 
   // PARA MANTENIMIENTO EN SERVICIO PARA HABITACION
 

@@ -27,13 +27,16 @@ export class ListarHotelComponent implements OnInit{
       this.router.navigate(["editar-hotel"])
   }
 
-  Eliminar(hotel:Hotel){
-    this.servicio.eliminarHotel(hotel)
-    .subscribe(data => {
-      this.hoteles=this.hoteles.filter(h => h! == hotel);
-      alert("Hotel Eliminado Satisfactoriamente....!!!!")
-      this.router.navigate(["listar-hotel"])
-    })
+  Eliminar(id:number){
+    this.servicio.eliminarHotel(id)
+    .subscribe(() => {
+      // Vuelve a cargar la lista de habitaciones después de eliminar
+      this.servicio.getHoteles()
+      .subscribe(data => {
+        this.hoteles = data;
+        alert("Hotel Eliminado Satisfactoriamente....!!!!")
+      });
+    });
   }
 
 
