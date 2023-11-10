@@ -1,1 +1,35 @@
-<p>editar-habitacion works!</p>
+<h2>Editar Habitación</h2>
+<form (ngSubmit)="actualizarHabitacion()">
+  <div class="form-group">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" [(ngModel)]="habitacion.nombre" required>
+  </div>
+  <div class="form-group">
+    <label for="numero">Número de Habitación</label>
+    <input type="number" id="numero" name="numero" [(ngModel)]="habitacion.numero" required>
+  </div>
+  <div class="form-group">
+    <label for="tipo">Tipo:</label>
+    <input type="text" id="tipo" name="tipo" [(ngModel)]="habitacion.tipo" required>
+  </div>
+  <div class="form-group">
+    <label for="capacidad">Capacidad:</label>
+    <input type="number" id="capacidad" name="capacidad" [(ngModel)]="habitacion.capacidad" required>
+  </div>
+  <div class="form-group">
+    <label for="precio">Precio:</label>
+    <input type="number" id="precio" name="precio" [(ngModel)]="habitacion.precio" required>
+  </div>
+  <div class="form-group">
+    <label for="imagen">Imagen:</label>
+    <input type="text" id="imagen" name="imagen" [(ngModel)]="habitacion.imagen" required>
+  </div>
+  <div class="form-group">
+    <label for="hotel">Hotel a Actualizar : {{ habitacion.hotel.nombre }} | Actualizar Hotel:  </label> 
+    <select id="hotel" name="hotel" [(ngModel)]="habitacion.hotel" required>
+      <option *ngFor="let hotel of hoteles" [ngValue]="hotel">{{ hotel.nombre }} </option>
+    </select>
+  </div>
+  
+  <button type="submit">Actualizar</button>
+</form>

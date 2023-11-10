@@ -10,13 +10,18 @@ import { RegisterComponent } from './components/register/register.component';
 import { ListarHotelComponent } from './components/listar-hotel/listar-hotel.component';
 import { RegistrarHotelComponent } from './components/registrar-hotel/registrar-hotel.component';
 
-import {ServicioService} from './Servicio/servicio.service';
-import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { ServicioService } from './Servicio/servicio.service';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { EditarHotelComponent } from './components/editar-hotel/editar-hotel.component';
 import { ListarHabitacionComponent } from './components/listar-habitacion/listar-habitacion.component';
 import { RegistrarHabitacionComponent } from './components/registrar-habitacion/registrar-habitacion.component';
 import { EditarHabitacionComponent } from './components/editar-habitacion/editar-habitacion.component';
+
+import { RegistrarReservaComponent } from './components/registrar-reserva/registrar-reserva.component';
+import { EditarReservaComponent } from './components/editar-reserva/editar-reserva.component';
+import { ListarReservaComponent } from './components/listar-reserva/listar-reserva.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -30,15 +35,13 @@ import { EditarHabitacionComponent } from './components/editar-habitacion/editar
     EditarHotelComponent,
     ListarHabitacionComponent,
     RegistrarHabitacionComponent,
-    EditarHabitacionComponent
+    EditarHabitacionComponent,
+    ListarReservaComponent,
+    RegistrarReservaComponent,
+    EditarReservaComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [ServicioService],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [ServicioService, DatePipe],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

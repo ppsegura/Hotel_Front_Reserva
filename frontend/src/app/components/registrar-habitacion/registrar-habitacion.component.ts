@@ -19,7 +19,8 @@ export class RegistrarHabitacionComponent implements OnInit {
 
   ngOnInit(){
     // Al iniciar el componente, obtener la lista de hoteles desde el servicio
-    this.servicioService.getHoteles().subscribe(data => {
+    this.servicioService.getHoteles()
+    .subscribe(data => {
       this.hoteles = data;
     });
   }

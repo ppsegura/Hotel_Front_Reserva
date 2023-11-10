@@ -12,5 +12,7 @@
   <h2>Hotel</h2>
   <img style="width: 250px;" src="{{ habitacion.hotel.imagen }}" >
   <!-- Agregar botón para eliminar habitación -->
+  <button (click)="editarHabitacion(habitacion.id)">Editar</button>
   <button (click)="eliminarHabitacion(habitacion.id)">Eliminar</button>
+
 </div>

@@ -1,0 +1,29 @@
+<h2>Registrar Reserva</h2>
+
+<form (ngSubmit)="registrarReserva()">
+  <div class="form-group">
+    <label for="fechaLlegada">Fecha de Llegada:</label>
+    <input type="date" id="fechaLlegada" name="fechaLlegada" [(ngModel)]="reserva.fechaLlegada" required>
+  </div>
+  <div class="form-group">
+    <label for="fechaSalida">Fecha de Salida:</label>
+    <input type="date" id="fechaSalida" name="fechaSalida" [(ngModel)]="reserva.fechaSalida" required>
+  </div>
+  <div class="form-group">
+    <label for="numeroHabitaciones">Número de Habitaciones:</label>
+    <input type="number" id="numeroHabitaciones" name="numeroHabitaciones" [(ngModel)]="reserva.numeroHabitaciones" required>
+  </div>
+  <div class="form-group">
+    <label for="habitacion">Habitación:</label>
+    <select id="habitacion" name="habitacion" [(ngModel)]="reserva.habitacion" required>
+      <option *ngFor="let habitacion of habitaciones" [ngValue]="habitacion">{{ habitacion.nombre }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="usuario">Usuario:</label>
+    <select id="usuario" name="usuario" [(ngModel)]="reserva.usuario" required>
+      <option *ngFor="let usuario of usuarios" [ngValue]="usuario">{{ usuario.username }}</option>
+    </select>
+  </div>
+  <button type="submit">Registrar Reserva</button>
+</form>

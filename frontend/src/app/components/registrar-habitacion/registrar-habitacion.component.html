@@ -6,8 +6,20 @@
   </div>
   
   <div class="form-group">
-    <label for="numero">Número:</label>
+    <label for="numero">Número de Habitación:</label>
     <input type="number" id="numero" name="numero" [(ngModel)]="habitacion.numero" required>
+  </div>
+  <div class="form-group">
+    <label for="tipo">Tipo de Habitación:</label>
+    <input type="text" id="tipo" name="tipo" [(ngModel)]="habitacion.tipo" required>
+  </div>
+  <div class="form-group">
+    <label for="capacidad">Capacidad de Personas:</label>
+    <input type="number" id="capacidad" name="capacidad" [(ngModel)]="habitacion.capacidad" required>
+  </div>
+  <div class="form-group">
+    <label for="precio">Precio de Habitación:</label>
+    <input type="number" id="precio" name="precio" [(ngModel)]="habitacion.precio" required>
   </div>
   <div class="form-group">
     <label for="imagen">Imagen:</label>

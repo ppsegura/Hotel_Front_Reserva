@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Hotel } from '../Modelo/Hotel';
 import { Habitacion } from '../Modelo/Habitacion';
+import { Reserva } from '../Modelo/Reserva';
+import { Usuario } from '../Modelo/Usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -60,6 +62,34 @@ UrlHabitacion = 'http://localhost:8080/habitacion';
 
   // PARA MANTENIMIENTO EN SERVICIO PARA RESERVA
   
+  UrlReserva = 'http://localhost:8080/reserva';
 
+  getReservas() {
+    return this.http.get<Reserva[]>(this.UrlReserva);
+  }
+
+  createReserva(reserva: Reserva) {
+    return this.http.post<Reserva>(this.UrlReserva, reserva);
+  }
+
+  getReservaId(id: number) {
+    return this.http.get<Reserva>(this.UrlReserva + "/" + id);
+  }
+
+  updateReserva(reserva: Reserva) {
+    return this.http.put<Reserva>(this.UrlReserva + "/" + reserva.id, reserva);
+  }
+
+  eliminarReserva(id: number) {
+    return this.http.delete<Reserva>(this.UrlReserva + "/" + id);
+  }
+
+   // PARA MANTENIMIENTO EN SERVICIO PARA USUARIO
+
+  UrlUsuario = 'http://localhost:8080/usuario';
+
+  getUsuarios() {
+    return this.http.get<Usuario[]>(this.UrlUsuario);
+  }
 
 }

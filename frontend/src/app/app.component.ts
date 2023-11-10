@@ -22,6 +22,10 @@ export class AppComponent {
   RegistrarHabitacion(){
     this.router.navigate(["registrar-habitacion"])
   }
+  
+  RegistrarReserva(){
+    this.router.navigate(["registrar-reserva"])
+  }
 
 }
 
