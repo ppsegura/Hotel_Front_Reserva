@@ -11,7 +11,16 @@
   </div>
   <div class="form-group">
     <label for="tipo">Tipo de Habitación:</label>
-    <input type="text" id="tipo" name="tipo" [(ngModel)]="habitacion.tipo" required>
+    <select id="tipo" name="tipo" [(ngModel)]="habitacion.tipo" required  required>
+      
+      <option selected disabled value="">Tipo Habitacion...</option>
+      <option selected  value="Matrimonial">Matrimonial</option>
+      <option selected  value="Suite">Suite</option>
+      <option selected  value="MichiLove">MichiLove</option>
+      <option selected  value="KING">KING</option>
+    <!--<label for="tipo">Tipo de Habitación:</label>
+    <input type="text" id="tipo" name="tipo" [(ngModel)]="habitacion.tipo" required>-->
+    </select>
   </div>
   <div class="form-group">
     <label for="capacidad">Capacidad de Personas:</label>

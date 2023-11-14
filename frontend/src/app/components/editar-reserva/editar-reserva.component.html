@@ -4,7 +4,7 @@
   <div class="form-group">
     <label for="fechaLlegada">Fecha de Llegada:</label>
     <input type="date" id="fechaLlegada" name="fechaLlegada" [(ngModel)]="reserva.fechaLlegada" required>
-    <p>Fecha registrada: {{ reserva.fechaLlegada | date:'dd-MM-yyyy' }}</p>
+    <p>Fecha registrada: {{ reserva.fechaLlegada }}</p>
   </div>
   <div class="form-group">
     <label for="fechaSalida">Fecha de Salida:</label>
@@ -16,14 +16,19 @@
   </div>
   <div class="form-group">
     <label for="habitacion">Habitación:</label>
+    {{reserva.habitacion.nombre}}
     <select id="habitacion" name="habitacion" [(ngModel)]="reserva.habitacion" required>
-      <option [ngValue]="reserva.habitacion">{{ reserva.habitacion.nombre }}</option>
+      <option *ngFor="let habitacion of habitaciones" [ngValue]="habitacion">{{ habitacion.nombre }}</option>
+      
     </select>
   </div>
   <div class="form-group">
     <label for="usuario">Usuario:</label>
+    {{reserva.usuario.username}}
     <select id="usuario" name="usuario" [(ngModel)]="reserva.usuario" required>
-      <option [ngValue]="reserva.usuario">{{ reserva.usuario.username }}</option>
+      
+      <option *ngFor="let usuario of usuarios" [ngValue]="usuario">{{ usuario.username }} </option>
+        <!--[ngValue]="reserva.usuario">{{ reserva.usuario.username }}!-->
     </select>
   </div>
   <button type="submit">Actualizar Reserva</button>
