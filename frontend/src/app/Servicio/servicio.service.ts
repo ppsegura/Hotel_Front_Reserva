@@ -37,6 +37,7 @@ export class ServicioService {
   }
 
 
+
   // PARA MANTENIMIENTO EN SERVICIO PARA HABITACION
 
 UrlHabitacion = 'http://localhost:8080/habitacion';
@@ -60,6 +61,7 @@ UrlHabitacion = 'http://localhost:8080/habitacion';
   eliminarHabitacion(id: number) {
     return this.http.delete<Habitacion>(this.UrlHabitacion + "/" + id);
   }
+  
 
   // PARA MANTENIMIENTO EN SERVICIO PARA RESERVA
   
