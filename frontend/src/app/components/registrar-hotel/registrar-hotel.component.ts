@@ -10,18 +10,37 @@ import { ServicioService } from 'src/app/Servicio/servicio.service';
 })
 export class RegistrarHotelComponent implements OnInit {
 
-  nuevoHotel : Hotel = new Hotel();
+  imagen!: File;
+  hoteles : Hotel = new Hotel();
+
 
   constructor(private router:Router, private servicio:ServicioService) {}
 
   ngOnInit(): void {}
 
-  Guardar(){
-    this.servicio.createHotel(this.nuevoHotel)
-    .subscribe(data =>{
-      alert("Se agrego hotel con éxito...!!!");
-      this.router.navigate(["listar-hotel"]);
-    })
+  Guardar(): void {
+    if (!this.imagen) {
+      console.error('Seleccione una imagen'); // Manejo básico de error si no se selecciona una imagen
+      return;
+    }
+
+    this.servicio.createHotel(this.imagen, this.hoteles)
+      .subscribe({
+        next: (response) => {
+          // Maneja la respuesta exitosa
+          console.log('Registro exitoso:', response);
+          // Puedes redirigir a otra página después del éxito si es necesario
+          this.router.navigate(['/listar-hotel']);
+        },
+        error: (error) => {
+          // Maneja el error
+          console.error('Error al registrar:', error);
+        }
+      });
+  }
+
+  onFileChange(event: any) {
+    this.imagen = event.target.files[0];
   }
 
 }

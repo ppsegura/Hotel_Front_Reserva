@@ -11,7 +11,7 @@ import { ListarHotelComponent } from './components/listar-hotel/listar-hotel.com
 import { RegistrarHotelComponent } from './components/registrar-hotel/registrar-hotel.component';
 
 import { ServicioService } from './Servicio/servicio.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditarHotelComponent } from './components/editar-hotel/editar-hotel.component';
 import { ListarHabitacionComponent } from './components/listar-habitacion/listar-habitacion.component';
@@ -40,7 +40,7 @@ import { DatePipe } from '@angular/common';
     RegistrarReservaComponent,
     EditarReservaComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule ],
   providers: [ServicioService, DatePipe],
   bootstrap: [AppComponent],
 })

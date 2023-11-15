@@ -10,7 +10,8 @@ import { ServicioService } from 'src/app/Servicio/servicio.service';
 })
 export class EditarHotelComponent implements OnInit {
 
-  hotel: Hotel = new Hotel();
+  hoteles : Hotel = new Hotel();
+  imagen!: File; // Variable para almacenar la nueva imagen
 
   constructor(private router:Router, private servicio:ServicioService){ }
 
@@ -19,27 +20,40 @@ export class EditarHotelComponent implements OnInit {
   }
 
   ObtenerEditar(){
-    
     let id = localStorage.getItem("id");
-    /*AGREGAMOS EL IF PARA QUE NO ACEPTE QUE SEA NULL ANTES DE ACCEDER A LA PROPIEDAD ID*/ 
     if (id != null) {
-     
       this.servicio.getHotelId(+id)
-    .subscribe(data =>{
-      console.log(data);
-      this.hotel=data;
-    })
+        .subscribe(data => {
+          console.log(data);
+          this.hoteles = data;
+        });
+    }
   }
-}
 
-Actualizar(hotel:Hotel){
-  this.servicio.updateHotel(hotel)
-  .subscribe(data => {
-    this.hotel = data;
-    alert("Se Actualizo con Éxito...!!!");
-    this.router.navigate(["listar-hotel"]);
-  })
-}
+  // Método para manejar la selección de la nueva imagen
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    this.imagen = file;
+  }
 
-
+  Actualizar(hotel: Hotel) {
+    if (this.imagen) {
+      // Llama a updateHotel pasando la imagen y el hotel
+      this.servicio.updateHotel(this.imagen, hotel)
+        .subscribe(
+          data => {
+            this.hoteles = data;
+            alert("Se Actualizó con Éxito...!!!");
+            this.router.navigate(["listar-hotel"]);
+          },
+          error => {
+            console.error("Error al actualizar el hotel:", error);
+            // Agregar lógica para manejar el error (por ejemplo, mostrar un mensaje al usuario)
+          }
+      );
+    } else {
+      // Agregar lógica para manejar el caso en que no haya una nueva imagen seleccionada
+      console.warn("No hay una nueva imagen seleccionada");
+    }
+  }
 }

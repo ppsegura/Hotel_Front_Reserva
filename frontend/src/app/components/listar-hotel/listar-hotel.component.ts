@@ -23,7 +23,7 @@ export class ListarHotelComponent implements OnInit{
   }
 // EDITAR => PARA LANZAR AL COMPONENT EDITAR Y AGARRAR LOS DATOS POR EL ID PARA PODER ACTUALZIAR DESDE ALLA
   Editar(hotel:Hotel){
-      localStorage.setItem("id",hotel.id.toString());
+      localStorage.setItem("id",hotel.id!.toString());
       this.router.navigate(["editar-hotel"])
   }
 
