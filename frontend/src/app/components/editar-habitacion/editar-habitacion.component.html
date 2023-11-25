@@ -1,44 +1,48 @@
 <h2>Editar Habitación</h2>
-<form (ngSubmit)="actualizarHabitacion()">
+<form (ngSubmit)="actualizarHabitacion(h)">
   <div class="form-group">
     <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" [(ngModel)]="habitacion.nombre" required>
+    <input type="text" id="nombre" name="nombre" [(ngModel)]="h.nombre" required>
   </div>
   <div class="form-group">
     <label for="numero">Número de Habitación</label>
-    <input type="number" id="numero" name="numero" [(ngModel)]="habitacion.numero" required>
+    <input type="number" id="numero" name="numero" [(ngModel)]="h.numero" required>
   </div>
   <div class="form-group">
-    <label for="tipo">Tipo de Habitación:</label>
-    <select id="tipo" name="tipo" [(ngModel)]="habitacion.tipo" required  required>
-      
-      <option selected disabled value="">Tipo Habitacion...</option>
-      <option selected  value="Matrimonial">Matrimonial</option>
-      <option selected  value="Suite">Suite</option>
-      <option selected  value="MichiLove">MichiLove</option>
-      <option selected  value="KING">KING</option>
-    <!--<label for="tipo">Tipo de Habitación:</label>
-    <input type="text" id="tipo" name="tipo" [(ngModel)]="habitacion.tipo" required>-->
+    <label for="tipoHabitacion">Tipo de Habitación:</label>
+    <select id="tipoHabitacion" name="tipoHabitacion" [(ngModel)]="h.tipoHabitacion" required>
+      <option *ngFor="let tipo of tipohabitacion" [ngValue]="tipo">{{tipo.nombre_tipo}}</option>
     </select>
   </div>
   <div class="form-group">
     <label for="capacidad">Capacidad:</label>
-    <input type="number" id="capacidad" name="capacidad" [(ngModel)]="habitacion.capacidad" required>
+    <input type="number" id="capacidad" name="capacidad" [(ngModel)]="h.capacidad" required>
   </div>
   <div class="form-group">
     <label for="precio">Precio:</label>
-    <input type="number" id="precio" name="precio" [(ngModel)]="habitacion.precio" required>
+    <input type="number" id="precio" name="precio" [(ngModel)]="h.precio" step=".01" required>
   </div>
   <div class="form-group">
-    <label for="imagen">Imagen:</label>
-    <input type="text" id="imagen" name="imagen" [(ngModel)]="habitacion.imagen" required>
+    <label for="imagen">Imagen</label>
+    <input type="file" (change)="onFileSelected($event)" name="imagen">
   </div>
+
   <div class="form-group">
-    <label for="hotel">Hotel a Actualizar : {{ habitacion.hotel.nombre }} | Actualizar Hotel:  </label> 
-    <select id="hotel" name="hotel" [(ngModel)]="habitacion.hotel" required>
-      <option *ngFor="let hotel of hoteles" [ngValue]="hotel">{{ hotel.nombre }} </option>
+    <label for="estado">Disponibilidad:</label>
+    <select id="estado" name="estado" [(ngModel)]="h.estado" required>
+      <option selected disabled value="">Seleccion la disponibilidad...</option>
+      <option [ngValue]="true">Disponible</option>
+      <option [ngValue]="false">No disponible</option>
     </select>
   </div>
-  
+
+  <div class="form-group">
+    <label for="hotel">Hotel a Actualizar :</label>
+    <select id="hotel" name="hotel" [(ngModel)]="h.hotel" required>
+      <option selected disabled value="">Tipo Hotel...</option>
+      <option *ngFor="let hot of hoteles" [ngValue]="hot">{{ hot.nombre }} </option>
+    </select>
+  </div>
+
   <button type="submit">Actualizar</button>
 </form>

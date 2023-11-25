@@ -6,24 +6,24 @@
     <div class="card-body">
       <form (ngSubmit)="Actualizar(hoteles)" #hotelForm="ngForm" enctype="multipart/form-data">
         <div class="form-group">
-          <label for="id">Id</label>
-          <input type="text" class="form-control" [(ngModel)]="hoteles.id" name="id" readonly>
+          <label for="idInput">Id</label>
+          <input type="text" class="form-control" [(ngModel)]="hoteles.id" name="id" id="idInput" readonly>
         </div>
         <div class="form-group">
-          <label for="nombre">Nombres</label>
-          <input type="text" class="form-control" [(ngModel)]="hoteles.nombre" name="nombre" required>
+          <label for="nombreInput">Nombres</label>
+          <input type="text" class="form-control" [(ngModel)]="hoteles.nombre" name="nombre" id="nombreInput" required>
         </div>
         <div class="form-group">
-          <label for="ciudad">Ciudad</label>
-          <input type="text" class="form-control" [(ngModel)]="hoteles.ciudad" name="ciudad" required>
+          <label for="ciudadInput">Ciudad</label>
+          <input type="text" class="form-control" [(ngModel)]="hoteles.ciudad" name="ciudad" id="ciudadInput" required>
         </div>
         <div class="form-group">
-          <label for="direccion">Direccion</label>
-          <input type="text" class="form-control" [(ngModel)]="hoteles.direccion" name="direccion" required>
+          <label for="direccionInput">Direccion</label>
+          <input type="text" class="form-control" [(ngModel)]="hoteles.direccion" name="direccion" id="direccionInput" required>
         </div>
         <div class="form-group">
-          <label for="telefono">Telefono</label>
-          <input type="text" class="form-control" [(ngModel)]="hoteles.telefono" name="telefono" required>
+          <label for="telefonoInput">Telefono</label>
+          <input type="text" class="form-control" [(ngModel)]="hoteles.telefono" name="telefono" id="telefonoInput" required>
         </div>
         <div class="form-group">
           <label for="imagen">Imagen</label>

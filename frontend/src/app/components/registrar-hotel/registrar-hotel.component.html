@@ -1,36 +1,39 @@
-  <div class="container col-md-6">
-    <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h3>Agregar Hoteles</h3>
+<div class="container col-md-6">
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3>Agregar Hoteles</h3>
+    </div>
+    <div class="card-body">
+      <form action="" enctype="multipart/form-data" (ngSubmit)="Guardar()">
+        <div class="form-group">
+          <label style="margin-top: 3px;" for="nombreInput">Nombres</label>
+          <input style="margin-top: 5px;" type="text" class="form-control" [(ngModel)]="hoteles.nombre" name="nombre"
+            id="nombreInput">
         </div>
-        <div class="card-body">
-            <form action="" enctype="multipart/form-data" (ngSubmit)="Guardar()">
-                <div class="form-group">
-                    <label style="margin-top: 3px;" for="">Nombres</label>
-                    <input style="margin-top: 5px;" type="text" class="form-control" [(ngModel)]="hoteles.nombre" name="nombre">
-                </div>
-                <div class="form-group">
-                  <label style="margin-top: 3px;" for="">Ciudad</label>
-                  <input style="margin-top: 5px;" type="text" class="form-control" [(ngModel)]="hoteles.ciudad"  name="ciudad">
-              </div>
-              <div class="form-group">
-                <label style="margin-top: 3px;" for="">Direccion</label>
-                <input style="margin-top: 5px;" type="text" class="form-control" [(ngModel)]="hoteles.direccion"  name="direccion">
-            </div>
-            <div class="form-group">
-              <label style="margin-top: 3px;" for="">Telefono</label>
-              <input style="margin-top: 5px;" type="text" class="form-control" [(ngModel)]="hoteles.telefono"  name="telefono">
-          </div>
-          <div class="form-group">
-            <label style="margin-top: 3px;" for="">Url Imagen</label>
-            <input type="file" #imagenInputFile
-            (change)="onFileChange($event)" class="form-control" [(ngModel)]="imagen" name="imagen" accept="image/png, image/jpeg, image/jpg, image/gif">
+        <div class="form-group">
+          <label style="margin-top: 3px;" for="ciudadInput">Ciudad</label>
+          <input style="margin-top: 5px;" type="text" class="form-control" [(ngModel)]="hoteles.ciudad" name="ciudad"
+            id="ciudadInput">
         </div>
-                <div style="margin-top: 15px;">
-                <button class="btn btn-danger">guardar</button>
-                </div>
-            </form>
+        <div class="form-group">
+          <label style="margin-top: 3px;" for="direccionInput">Direccion</label>
+          <input style="margin-top: 5px;" type="text" class="form-control" [(ngModel)]="hoteles.direccion"
+            name="direccion" id="direccionInput">
         </div>
+        <div class="form-group">
+          <label style="margin-top: 3px;" for="telefonoInput">Telefono</label>
+          <input style="margin-top: 5px;" type="text" class="form-control" [(ngModel)]="hoteles.telefono"
+            name="telefono" id="telefonoInput">
+        </div>
+        <div class="form-group">
+          <label style="margin-top: 3px;" for="imagenInput">Imagen</label>
+          <input type="file" #imagenInputFile (change)="onFileChange($event)" class="form-control" name="imagen"
+            accept="image/png, image/jpeg, image/jpg, image/gif">
+        </div>
+        <div style="margin-top: 15px;">
+          <button class="btn btn-danger">guardar</button>
+        </div>
+      </form>
     </div>
   </div>
-
+</div>

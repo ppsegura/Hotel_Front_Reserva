@@ -5,6 +5,7 @@ import { Habitacion } from '../Modelo/Habitacion';
 import { Reserva } from '../Modelo/Reserva';
 import { Usuario } from '../Modelo/Usuario';
 import { Observable } from 'rxjs';
+import { TipoHabitacion } from '../Modelo/TipoHabitacion';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class ServicioService {
 
   // PARA MANTENIMIENTO EN SERVICIO PARA HOTEL
 
-  Url = 'http://prueba-aws-env.eba-aq2rgpt2.us-east-1.elasticbeanstalk.com/hotel';
+  Url = 'http://localhost:5000/hotel';
 
   getHoteles() {
     return this.http.get<Hotel[]>(this.Url);
@@ -52,7 +53,7 @@ export class ServicioService {
 
     // Convierte el objeto hotel a JSON y agrega el blob al FormData
     const jsonBlob = new Blob([JSON.stringify(hotel)], { type: 'application/json' });
-    formData.append('hoteles', jsonBlob); // Cambiado a 'h' para coincidir con el controlador
+    formData.append('hoteles', jsonBlob); // Cambiado a 'hoteles' para coincidir con el controlador
 
     // Configura las cabeceras para manejar la carga de archivos
     const headers = new HttpHeaders({ 'enctype': 'multipart/form-data' });
@@ -68,22 +69,48 @@ export class ServicioService {
 
   // PARA MANTENIMIENTO EN SERVICIO PARA HABITACION
 
-UrlHabitacion = 'http://localhost:8080/habitacion';
+UrlHabitacion = 'http://localhost:5000/habitacion';
 
   getHabitaciones() {
     return this.http.get<Habitacion[]>(this.UrlHabitacion);
   }
 
-  createHabitacion(habitacion: Habitacion) {
-    return this.http.post<Habitacion>(this.UrlHabitacion, habitacion);
+  createHabitacion(imagen: File, habitacion: Habitacion) {
+    const formData = new FormData();
+
+    // Agregar imagen al FormData
+    formData.append('imagen',imagen);
+
+    //Convertir el objeto habitacion a JSON y lo agrega al formData
+    const jsonBlob = new Blob([JSON.stringify(habitacion)], {type: 'application/json'});
+    formData.append('habitacion', jsonBlob);
+
+    //Configuracion de cabeceras
+    const headers = new HttpHeaders({'enctype': 'multipart/form-data'});
+
+    // Solicitud POST con el FormData
+    return this.http.post<Habitacion>(this.UrlHabitacion, formData, {headers});
   }
 
   getHabitacionId(id: number) {
     return this.http.get<Habitacion>(this.UrlHabitacion + "/" + id);
   }
 
-  updateHabitacion(habitacion: Habitacion) {
-    return this.http.put<Habitacion>(this.UrlHabitacion + "/" + habitacion.id, habitacion);
+  updateHabitacion(imagen: File, habitacion: Habitacion) {
+    const formData = new FormData();
+
+    // Agregar imagen al FormData
+    formData.append('imagen',imagen);
+
+    //Convertir el objeto habitacion a JSON y lo agrega al formData
+    const jsonBlob = new Blob([JSON.stringify(habitacion)], {type: 'application/json'});
+    formData.append('h', jsonBlob);
+
+    //Configuracion de cabeceras
+    const headers = new HttpHeaders({'enctype': 'multipart/form-data'});
+
+    // PUT con el FormData
+    return this.http.put<Habitacion>(this.UrlHabitacion + "/" + habitacion.id, formData, {headers});
   }
 
   eliminarHabitacion(id: number) {
@@ -121,6 +148,14 @@ UrlHabitacion = 'http://localhost:8080/habitacion';
 
   getUsuarios() {
     return this.http.get<Usuario[]>(this.UrlUsuario);
+  }
+
+  // PARA MANTENIMIENTO EN SERVICIO PARA TIPOHABITACION
+
+  UrlTipoHabitacion = 'http://localhost:5000/tipoHabitacion';
+
+  getTipoHabitacion() {
+    return this.http.get<TipoHabitacion[]>(this.UrlTipoHabitacion);
   }
 
 }

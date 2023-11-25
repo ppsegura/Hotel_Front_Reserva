@@ -19,6 +19,7 @@ export class RegistrarHotelComponent implements OnInit {
   ngOnInit(): void {}
 
   Guardar(): void {
+
     if (!this.imagen) {
       console.error('Seleccione una imagen'); // Manejo básico de error si no se selecciona una imagen
       return;

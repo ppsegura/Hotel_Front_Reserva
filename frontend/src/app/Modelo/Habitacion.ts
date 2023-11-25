@@ -1,12 +1,15 @@
 import { Hotel } from "./Hotel";
+import { TipoHabitacion } from "./TipoHabitacion";
 
 export class Habitacion {
-  id!: number;
+  id?: number;
   nombre!: string;
   numero!: number;
-  tipo!: string;
+  tipoHabitacion!: TipoHabitacion;
   capacidad!: number;
   precio!: string;
+  hotel!: Hotel;
   imagen!: string;
-  hotel!: Hotel; 
+  imagen_id!: string;
+  estado!: boolean;
 }

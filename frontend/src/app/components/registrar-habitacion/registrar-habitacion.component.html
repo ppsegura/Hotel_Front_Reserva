@@ -1,25 +1,19 @@
 <h2>Registrar Habitación</h2>
-<form (ngSubmit)="registrarHabitacion()">
+<form action="" (ngSubmit)="registrarHabitacion()" enctype="multipart/form-data">
   <div class="form-group">
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre" [(ngModel)]="habitacion.nombre" required>
   </div>
-  
+
   <div class="form-group">
     <label for="numero">Número de Habitación:</label>
     <input type="number" id="numero" name="numero" [(ngModel)]="habitacion.numero" required>
   </div>
   <div class="form-group">
     <label for="tipo">Tipo de Habitación:</label>
-    <select id="tipo" name="tipo" [(ngModel)]="habitacion.tipo" required  required>
-      
+    <select id="tipo" name="tipo" [(ngModel)]="habitacion.tipoHabitacion" required>
       <option selected disabled value="">Tipo Habitacion...</option>
-      <option selected  value="Matrimonial">Matrimonial</option>
-      <option selected  value="Suite">Suite</option>
-      <option selected  value="MichiLove">MichiLove</option>
-      <option selected  value="KING">KING</option>
-    <!--<label for="tipo">Tipo de Habitación:</label>
-    <input type="text" id="tipo" name="tipo" [(ngModel)]="habitacion.tipo" required>-->
+      <option *ngFor="let tipo of tipohabitacion" [ngValue]="tipo">{{tipo.nombre_tipo}}</option>
     </select>
   </div>
   <div class="form-group">
@@ -31,13 +25,23 @@
     <input type="number" id="precio" name="precio" [(ngModel)]="habitacion.precio" required>
   </div>
   <div class="form-group">
-    <label for="imagen">Imagen:</label>
-    <input type="text" id="imagen" name="imagen" [(ngModel)]="habitacion.imagen" required>
+    <label for="imagenInput">Elige la Imagen:</label>
+    <input type="file" #imagenInputFile (change)="onFileChange($event)" name="imagen"
+      accept="image/png, image/jpeg, image/jpg, image/gif">
+  </div>
+  <div class="form-group">
+    <label for="estado">Disponibilidad:</label>
+    <select id="estado" name="estado" [(ngModel)]="habitacion.estado" required>
+      <option selected disabled value="">Seleccion la disponibilidad...</option>
+      <option [ngValue]="true">Disponible</option>
+      <option [ngValue]="false">No disponible</option>
+    </select>
   </div>
   <div class="form-group">
     <label for="hotel">Hotel:</label>
     <select id="hotel" name="hotel" [(ngModel)]="habitacion.hotel" required>
-      <option *ngFor="let hotel of hoteles" [ngValue]="hotel">{{ hotel.nombre }}</option>
+      <option selected disabled value="">Selecciona el hotel...</option>
+      <option *ngFor="let hot of hotel" [ngValue]="hot">{{ hot.nombre }}</option>
     </select>
   </div>
   <button type="submit">Registrar</button>

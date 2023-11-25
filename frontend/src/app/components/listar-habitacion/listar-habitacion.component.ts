@@ -16,17 +16,24 @@ constructor(private servicioService: ServicioService, private router:Router){  }
 
 ngOnInit(): void {
   this.servicioService.getHabitaciones()
-  .subscribe(data => {
-    this.habitaciones = data;
-  });
+    .subscribe(data => {
+      // Convierte los valores de precio a números con punto decimal
+        this.habitaciones = data.map(habitacion => {
+        habitacion.precio = parseFloat(habitacion.precio.replace(',', '.')).toString();
+        return habitacion;
+      });
+    });
 }
 
-eliminarHabitacion(id:number){
-  this.servicioService.eliminarHabitacion(id)
-  .subscribe(() => {
-    // Vuelve a cargar la lista de habitaciones después de eliminar
-    this.servicioService.getHabitaciones().subscribe(data => {
-      this.habitaciones = data;
+eliminarHabitacion(id: number) {
+  this.servicioService.eliminarHabitacion(id).subscribe(() => {
+    // Después de eliminar la habitación, obtén las habitaciones actualizadas
+    this.servicioService.getHabitaciones().subscribe((data) => {
+      // Convierte los valores de precio a números con punto decimal
+      this.habitaciones = data.map((habitacion) => {
+        habitacion.precio = parseFloat(habitacion.precio.replace(',', '.')).toString();
+        return habitacion;
+      });
     });
   });
 }
